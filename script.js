@@ -42,3 +42,33 @@ function mostraInput() {
   document.getElementById('verifica').style.display = 'block';
 }
 
+// Verifica i numeri inseriti dall'utente
+document.getElementById('verifica').addEventListener('click', function () {
+  let inputs = document.querySelectorAll('#input-numeri input');
+  let numeriUtente = [];
+
+  // Ottieni i numeri dall'utente e verifica che siano validi e non duplicati
+  for (let i = 0; i < inputs.length; i++) {
+    let numero = parseInt(inputs[i].value);
+    if (!isNaN(numero) && numeriUtente.indexOf(numero) === -1) {
+      numeriUtente.push(numero);
+    }
+  }
+
+  // Controlla che ci siano esattamente 5 numeri validi
+  if (numeriUtente.length !== 5) {
+    alert("Inserisci 5 numeri validi e non duplicati.");
+    return;
+  }
+
+  // Trova i numeri indovinati
+  let numeriIndovinati = [];
+  for (let i = 0; i < numeriUtente.length; i++) {
+    if (numeriCasuali.includes(numeriUtente[i])) {
+      numeriIndovinati.push(numeriUtente[i]);
+    }
+  }
+
+  // Mostra il risultato
+  document.getElementById('risultato').innerText = `Hai indovinato ${numeriIndovinati.length} numero/i: ${numeriIndovinati.join(', ')}`;
+});
