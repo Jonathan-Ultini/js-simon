@@ -28,3 +28,17 @@ let timer = setInterval(function () {
   }
 }, 1000);
 
+// Funzione per mostrare gli input per l'utente
+function mostraInput() {
+  let containerInput = document.getElementById('input-numeri');
+  for (let i = 0; i < 5; i++) {
+    let input = document.createElement('input');
+    input.type = 'number';
+    input.min = 0;
+    input.max = 100;
+    containerInput.appendChild(input);
+  }
+  containerInput.style.display = 'block';
+  document.getElementById('verifica').style.display = 'block';
+}
+
